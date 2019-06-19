@@ -1,0 +1,45 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.biru{
+    color:#000080;
+    font-weight:bold;
+}
+.birutext{
+    color:#000080;
+}
+.birubg{
+    background-color:#000080;
+    color:white;
+}
+.biruwoy{
+    background-color:#000080;
+    color:white;
+}
+.biruwoy:hover{
+    background-color:blue;
+}
+.orenwoy{
+    background-color:orangered;
+    color:white;
+}
+.orenwoy:hover{
+    background-color:red;
+}
+.table{
+    color:#000080;
+}
+.lebarwoy{
+    position:center;
+    width:800px;
+}
+.tengahwoy{
+padding-right:800px;
+}

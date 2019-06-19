@@ -1,0 +1,117 @@
+﻿<form action="" method="post" id="idFrmEditOrganisasi">
+    <table class="table">
+        <tr>
+            <td colspan="1">
+                <label>Nama Organisasi *</label>
+                <input type="text" name="name" class="form-control" id="idInpNamaOrganisasi">
+                <input type="hidden" name="id" id="idget" /> 
+            </td>
+            <td colspan="1">
+                <label>Jabatan *</label>
+                <input type="text" name="position" class="form-control" id="idInpJabatan">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1">
+                <label>Tahun Masuk *</label>
+                <select class="form-control  inputbiru" name="entry_year" id="idInpTahunMasuk">
+                    <option value="">-Pilih-</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                </select>
+            </td>
+            <td colspan="1">
+                <label>Tahun Keluar *</label>
+                <select class="form-control  inputbiru" name="exit_year" id="idInpTahunKeluar">
+                    <option value="">-Pilih-</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Tanggung Jawab</label>
+                <input type="text" name="responsibility" class="form-control" id="idInpTanggungJawab">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Catatan</label>
+                <textarea class="form-control" id="txtarea" name="notes" rows="6"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <button type="button" class="btn orenwoy" id="idBtnCancelOrganisasi">Cancel</button>
+                <button type="button" class="btn biruwoy" id="idBtnEditOrganisasi">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: '/Organisasi/AmbilData',
+            data: { ID: $('#idget').val() },
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $('#idInpNamaOrganisasi').val(mdl.name);
+                $('#idInpJabatan').val(mdl.position);
+                $('#idInpTahunMasuk').val(mdl.entry_year).selected;
+                $('#idInpTahunKeluar').val(mdl.exit_year).selected;
+                $('#idInpTanggungJawab').val(mdl.responsibility);
+                $('#txtarea').val(mdl.notes);
+            },
+            error: function (mdl) {
+                debugger;
+            }
+        });
+
+
+        $('#idBtnCancelOrganisasi').click(function () {
+            $('#idMdlCreateOrganisasi').close;
+            location.reload();
+        });
+
+
+        $('#idBtnEditOrganisasi').click(function () {
+            debugger;
+            var vDataBarang = $('#idFrmEditOrganisasi').serialize();
+            $.ajax({
+                url: 'Organisasi/EditSimpan',
+                data: vDataBarang,
+                method: 'Post',
+                success: function (mdl) {
+                    if (mdl.EditSimpan == "Berhasil") {
+                        debugger;
+                        alert("Data berhasil diedit");
+                        //
+                        //
+                        $('#idMdlEditOrganisasi').close;
+                        location.reload();
+                    }
+                    else
+                    {
+                        debugger;
+                        alert("Data gagal diedit");
+                    }
+                },
+                error: function (mdl) {
+                    debugger;
+                }
+            });
+        });
+
+    });
+</script>
+
