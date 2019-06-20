@@ -162,6 +162,7 @@
     <Content Include="Views\Organisasi\Index.cshtml" />
     <Content Include="Views\Organisasi\_Create.cshtml" />
     <Content Include="Views\Organisasi\_Edit.cshtml" />
+    <Content Include="Views\Organisasi\_Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -87,6 +87,26 @@
 </div><!-- /.modal -->
 
 
+<div class="modal fade" id="idMdlHapusOrganisasi" tabindex="-1" role="dialog">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content lebarpls">
+            <div class="modal-header merahbg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title">Hapus Organisasi ?</h4>
+            </div>
+            <div class="modal-body" id="idBodyHapusOrganisasi">
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 <script>
     var vDataTahun =
         { 1: '2011', 2: '2012', 3: '2013', 4: '2014', 5: '2015' };
@@ -110,7 +130,7 @@
                         '</button>' +
                         '<ul class="dropdown-menu">' +
                         '<li><a class="UbahOrganisasi" dataID="' + d.id + '" href="#">Ubah</a></li>' +
-                        '<li><a class="HapusOrganisasi" dataID="' + d.id + '" href="#">Hapus</a></li>' +
+                        '<li><a class="HapusOrganisasiConfirm" dataID="' + d.id + '" href="#">Hapus</a></li>' +
                         '</ul>' +
                         '</td>' +
                         '</tr>';
@@ -141,27 +161,48 @@
                 });
 
 
-
-                $('.HapusOrganisasi').click(function () {
+                $('.HapusOrganisasiConfirm').click(function () {
                     var vDataID = parseInt($(this).attr('dataID'));
                     debugger;
-                    var r = confirm('anda yakin ingin menghapus data organisasi?');
-                    if (r == true) {
-                        $.ajax({
-                            url: '/Organisasi/Delete',
-                            data: { ID: vDataID },
-                            method: 'Post',
-                            success: function (mdl) {
-                                alert('Berhasil menghapus data organisasi');
-                                location.reload();
-                                debugger;
-                            },
-                            error: function (mdl) {
-                                debugger;
-                            }
-                        });
-                    }
+                    $.ajax({
+                        url: '/Organisasi/DeleteConfirm',
+                        data: { ID: vDataID },
+                        method: 'Post',
+                        success: function (mdl) {
+                            $('#idBodyHapusOrganisasi').empty();
+                            $('#idBodyHapusOrganisasi').append(mdl);
+                            $('#idget').val(vDataID);
+                            $('#idMdlHapusOrganisasi').modal('show');
+                            debugger;
+                        },
+                        error: function (mdl) {
+                            debugger;
+                        }
+                    });
                 });
+
+
+                    
+                //$('.HapusOrganisasi').click(function () {
+                //    var vDataID = parseInt($(this).attr('dataID'));
+                //    debugger;
+                //    var r = confirm('anda yakin ingin menghapus data organisasi?');
+                //    if (r == true) {
+                //        $.ajax({
+                //            url: '/Organisasi/Delete',
+                //            data: { ID: vDataID },
+                //            method: 'Post',
+                //            success: function (mdl) {
+                //                alert('Berhasil menghapus data organisasi');
+                //                location.reload();
+                //                debugger;
+                //            },
+                //            error: function (mdl) {
+                //                debugger;
+                //            }
+                //        });
+                //    }
+                //});
 
             },
             error: function (mdl) {

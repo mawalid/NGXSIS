@@ -53,7 +53,10 @@ namespace Xsis.Web.Controllers
             return Json(OrganisasiRepo.GetByID(ID), JsonRequestBehavior.AllowGet);
         }
 
-
+        public ActionResult DeleteConfirm(int ID)
+        {
+            return PartialView("_Delete");
+        }
 
         public ActionResult Delete(int ID, Organisasi organisasimdl)
         {
