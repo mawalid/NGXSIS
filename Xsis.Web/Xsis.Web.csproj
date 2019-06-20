@@ -97,6 +97,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
@@ -124,6 +126,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="datepicker\package.json" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -136,9 +142,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KeahlianController.cs" />
     <Compile Include="Controllers\OrganisasiController.cs" />
-    <Compile Include="Controllers\PekerjaanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,11 +158,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Keahlian\Index.cshtml" />
-    <Content Include="Views\Keahlian\_Create.cshtml" />
-    <Content Include="Views\Keahlian\_Edit.cshtml" />
-    <Content Include="Views\Pekerjaan\Index.cshtml" />
-    <Content Include="Views\Pekerjaan\_Create.cshtml" />
     <Content Include="Views\Organisasi\Index.cshtml" />
     <Content Include="Views\Organisasi\_Create.cshtml" />
     <Content Include="Views\Organisasi\_Edit.cshtml" />
