@@ -135,6 +135,21 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="template_footer\bootstrap-datepicker.min.js" />
+    <Content Include="template_footer\common.js" />
+    <Content Include="template_footer\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="template_footer\jquery-ui.min.js" />
+    <Content Include="template_footer\jquery.dataTables.js" />
+    <Content Include="template_footer\jquery.flot.js" />
+    <Content Include="template_footer\jquery.flot.resize.js" />
+    <Content Include="template_header\bootstrap-datepicker.min.css" />
+    <Content Include="template_header\bootstrap-responsive.min.css" />
+    <Content Include="template_header\bootstrap.min.css" />
+    <Content Include="template_header\bootstrap.min.js" />
+    <Content Include="template_header\font-awesome.min.css" />
+    <Content Include="template_header\ionicons.min.css" />
+    <Content Include="template_header\jquery.min.js" />
+    <Content Include="template_header\theme.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -162,6 +177,9 @@
     <Content Include="Views\Organisasi\_Create.cshtml" />
     <Content Include="Views\Organisasi\_Edit.cshtml" />
     <Content Include="Views\Organisasi\_Delete.cshtml" />
+    <Content Include="Views\Shared\_TampilanAtas.cshtml" />
+    <Content Include="Views\Shared\_TampilanBawah.cshtml" />
+    <Content Include="Views\Shared\_TampilanKiri.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

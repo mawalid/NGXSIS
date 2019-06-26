@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Xsis.Repo
 {
@@ -16,8 +17,8 @@ namespace Xsis.Repo
             {
                 //result = db.Organisasi.ToList();
                 result = (from t in db.Organisasi
-                          where t.is_delete == false
-                          select t).ToList();
+                          where t.biodata_id == 1
+                          select t).OrderByDescending(x => x.id).ToList();
                 return result;
             }
             
@@ -72,7 +73,7 @@ namespace Xsis.Repo
                 Organisasi dep;
                 using (DataContext db = new DataContext())
                 {
-                    dep = db.Organisasi.Where(d => d.id == ID).First();
+                    dep = db.Organisasi.Where(d => d.id == ID).First(); 
                     dep.is_delete = true;
                     dep.deleted_by = organisasimdl.deleted_by;
                     dep.deleted_on = DateTime.Now;
@@ -94,7 +95,7 @@ namespace Xsis.Repo
                 Organisasi dep;
                 using (DataContext db = new DataContext())
                 {
-                    dep = db.Organisasi.Where(d => d.id == organisasi.id).First();
+                    dep = db.Organisasi.Where(d => d.id == organisasi.id).First();//d adalah suatu elemen di dalam dep, dimana d adalah dep.id, kemudian dep.id dibandingkan dengan ID.
                     dep.modified_by = organisasi.modified_by;
                     dep.modified_on = DateTime.Now;
                     dep.notes = organisasi.notes;
@@ -103,7 +104,7 @@ namespace Xsis.Repo
                     dep.entry_year = organisasi.entry_year;
                     dep.position = organisasi.position;
                     dep.name = organisasi.name;
-                    db.Entry(dep).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(dep).State = EntityState.Modified;//dep diperlakukan sebagai Entry di dalam database organisasi (System.Data.Entity.EntityState.Modified)
                     db.SaveChanges();
 
                 }

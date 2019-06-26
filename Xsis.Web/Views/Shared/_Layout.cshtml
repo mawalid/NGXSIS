@@ -1,40 +1,92 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NGXSIS</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/datepicker/jquery-ui.min.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <style>
+        .hdr-atas {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+        .bg-putih{
+            background-color:#ffffff;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .skin-blue{
+            background-color:#f2f2f2;
+        }
+    </style>
+
+
+    <style>
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 40%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 60%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+    </style>
+
+
+    <style type="text/css" media="screen and (min-width:960px)">
+    </style>
+
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+
+<body class="hold-transition skin-blue sidebar-mini hdr-atas">
+    <div class="wrapper hdr-atas">
+        @*Menggunakan HTML Helper*@
+        @Html.Partial("_TampilanAtas")
+        
+        @Html.Partial("_TampilanKiri")
+        <br />
+        @*Buat divisi untuk menampilkan content*@
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8 bg-putih">
+                <section>
+                    @RenderBody()
+                </section>
             </div>
         </div>
-    </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @Html.Partial("_TampilanBawah")
+
     </div>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/datepicker/jquery-ui.min.js"></script>
