@@ -193,10 +193,16 @@ body {
                 debugger;
                 $.each(mdl, function (i, d) {
                     debugger;
+                    if (d.entry_year==d.exit_year) {
+                        d.exit_year = '';
+                    }
+                    else {
+                        d.exit_year = ' s.d ' + d.exit_year;
+                    }
                     vStrHtml = vStrHtml + '<tr>' +
                         '<td style="border-top: 1px solid #000080">' + d.name + '</td>' +
                         '<td style="border-top: 1px solid #000080">' + d.position + '</td>' +
-                        '<td style="border-top: 1px solid #000080">' + d.entry_year + " s.d " + d.exit_year + '</td>' +
+                        '<td style="border-top: 1px solid #000080">' + d.entry_year + d.exit_year + '</td>' +
                         '<td class="dropdown" style="border-top: 1px solid #000080">' +
                         '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;' +
                         '<span class="caret"></span>' +
