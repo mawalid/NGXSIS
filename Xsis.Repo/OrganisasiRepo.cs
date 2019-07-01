@@ -17,7 +17,7 @@ namespace Xsis.Repo
             {
                 //result = db.Organisasi.ToList();
                 result = (from t in db.Organisasi
-                          where t.biodata_id == 1
+                          where t.is_delete == false
                           select t).OrderByDescending(x => x.id).ToList();
                 return result;
             }
