@@ -124,7 +124,8 @@ body {
                 @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                 <h4 class="modal-title" style="color: white; opacity:1;">
                     Detil Pelamar
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseIndexOrganisasi" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
                 </h4>
             </div>
             <div class="modal-body" id="idBodyIndexOrganisasi" style="margin-left: 10px;">
@@ -224,7 +225,7 @@ body {
                             <thead>
                                 <tr style="border-bottom: 3px solid #000080">
                                     <td colspan="4">
-                                        <h4 class="biru">Organisasi<button type="button" class="btn btn-link" id="idBtnCreateOrganisasi"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
+                                        <h4 class="biru">Organisasi<button type="button" class="btn btn-link" id="idBtnMdlCreateOrganisasi"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
                                     </td>
                                 </tr>
                                 <tr class="biru" style="border-bottom: 3px solid #000080">
@@ -250,6 +251,7 @@ body {
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
 <div class="modal fade" id="idMdlCreateOrganisasi" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog tengahpls" role="document">
         <div class="modal-content lebarpls">
@@ -257,7 +259,8 @@ body {
                 @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                 <h4 class="modal-title" style="color: white; opacity:1;">
                     Tambah Organisasi 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseCreateOrganisasi" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
                 </h4>
             </div>
             <div class="modal-body" id="idBodyCreateOrganisasi" style="margin-left: 10px;">
@@ -282,7 +285,8 @@ body {
                 @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                 <h4 class="modal-title" style="color: white; opacity:1;">
                     Ubah Organisasi
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseEditOrganisasi" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
                 </h4>
             </div>
             <div class="modal-body" id="idBodyEditOrganisasi" style="margin-left: 10px;">
@@ -320,7 +324,51 @@ body {
 </div><!-- /.modal -->
 
 
+<div class="modal fade" id="idIndexMdlCreateOrganisasi" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content lebarpls">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title" style="color: white; opacity:1;">
+                    Tambah Organisasi
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseCreateOrganisasiIndex" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
+                </h4>
+            </div>
+            <div class="modal-body" id="idBodyMdlCreateOrganisasi" style="margin-left: 10px;">
+
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
+    $('#idBtnCloseCreateOrganisasi').click(function () {
+        $('#idMdlCreateOrganisasi').close;
+        location.reload();
+    });
+
+    $('#idBtnCloseEditOrganisasi').click(function () {
+        $('#idMdlCreateOrganisasi').close;
+        location.reload();
+    });
+
+    $('#idBtnCloseIndexOrganisasi').click(function () {
+        $('#idMdlCreateOrganisasi').close;
+        location.reload();
+    });
+
+    $('#idBtnCloseCreateOrganisasiIndex').click(function () {
+        $('#idMdlCreateOrganisasi').close;
+        location.reload();
+    });
     var biodata_id = 1;
     $(document).ready(function () {
         var vStrHtml = '';
@@ -494,6 +542,25 @@ body {
                     $('#idBodyCreateOrganisasi').append(mdl);
 
                     $('#idMdlCreateOrganisasi').modal('show');
+                    debugger;
+                },
+                error: function (mdl) {
+                    debugger;
+                }
+            });
+        });
+
+        $('#idBtnMdlCreateOrganisasi').click(function () {
+            $.ajax({
+                url: '/Organisasi/CreateIndex',
+                method: 'Get',
+                data: { idBiodata: biodata_id },
+                success: function (mdl) {
+                    debugger;
+                    $('#idBodyMdlCreateOrganisasi').empty();
+                    $('#idBodyMdlCreateOrganisasi').append(mdl);
+
+                    $('#idIndexMdlCreateOrganisasi').modal('show');
                     debugger;
                 },
                 error: function (mdl) {

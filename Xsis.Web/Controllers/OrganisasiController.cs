@@ -83,5 +83,10 @@ namespace Xsis.Web.Controllers
                 return Json(new { EditSimpan = "Gagal" }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public ActionResult CreateIndex(int idBiodata)
+        {
+            return PartialView("_CreateIndex");
+        }
     }
 }
