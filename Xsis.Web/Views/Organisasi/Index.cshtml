@@ -91,6 +91,13 @@ body {
 }
 </style>
 
+<style>
+.widget-menu>li>a:hover {
+    background-color: #eee;
+    color: #000080;
+}
+</style>
+
 <div class="table-responsive" style="height:600px">
     <table class="table table-striped">
         <thead>
@@ -111,8 +118,8 @@ body {
 </div>
 
 <div class="modal fade" id="idMdlIndexOrganisasi" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog tengahpls" role="document">
-        <div class="modal-content lebarpls">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header birubg">
                 @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                 <h4 class="modal-title" style="color: white; opacity:1;">
@@ -122,24 +129,116 @@ body {
             </div>
             <div class="modal-body" id="idBodyIndexOrganisasi" style="margin-left: 10px;">
 
-                <div class="table-responsive" style="height:600px">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr style="border-bottom: 3px solid #000080">
-                                <td colspan="4">
-                                    <h4 class="biru">Organisasi<button type="button" class="btn btn-link" id="idBtnCreateOrganisasi"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
-                                </td>
-                            </tr>
-                            <tr class="biru" style="border-bottom: 3px solid #000080">
-                                <td>NAMA</td>
-                                <td>JABATAN</td>
-                                <td>PERIODE</td>
-                                <td>#</td>
-                            </tr>
-                        </thead>
-                        <tbody id="idTblMdlBodyOrganisasi"></tbody>
-                    </table>
+                <div class="row">
+                    <div class="col-lg-3 sidebar">
+                        <ul class="widget widget-menu unstyled batas-atas batas-bawah" style="background-color: white; border-style: solid; border-width: 1px;border-color:#000066;">
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages01">
+                                    Profil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages02">
+                                    Biodata
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                                    Pengalaman Kerja
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed center-block" data-toggle="collapse" href="#togglePages03">
+                                    Pendidikan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Pelatihan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Sertifikasi
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Sumber Lowongan Kerja
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages01">
+                                    Organisasi
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages02">
+                                    Biodata
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                                    Keluarga
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed center-block" data-toggle="collapse" href="#togglePages03">
+                                    Keahlian
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Lain-Lain
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Dokumen
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Catatan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Aktifasi Akun
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Lihat Tes
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Hasil Tes
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 table-responsive" style="height:600px">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="border-bottom: 3px solid #000080">
+                                    <td colspan="4">
+                                        <h4 class="biru">Organisasi<button type="button" class="btn btn-link" id="idBtnCreateOrganisasi"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
+                                    </td>
+                                </tr>
+                                <tr class="biru" style="border-bottom: 3px solid #000080">
+                                    <td>NAMA</td>
+                                    <td>JABATAN</td>
+                                    <td>PERIODE</td>
+                                    <td>#</td>
+                                </tr>
+                            </thead>
+                            <tbody id="idTblMdlBodyOrganisasi"></tbody>
+                        </table>
+                    </div>
                 </div>
+
 
                 @*<p>One fine body&hellip;</p>*@
             </div>
@@ -222,8 +321,7 @@ body {
 
 
 <script>
-    var vDataTahun =
-        { 1: '2011', 2: '2012', 3: '2013', 4: '2014', 5: '2015' };
+    var biodata_id = 1;
     $(document).ready(function () {
         var vStrHtml = '';
         
@@ -233,6 +331,7 @@ body {
             var vStrMdlHtml = '';
             $.ajax({
                 url: '/Organisasi/Tampil',
+                data: { idBiodata: biodata_id },
                 method: 'Get',
                 success: function (org) {
                     debugger;
@@ -281,6 +380,7 @@ body {
         $.ajax({
             url: '/Organisasi/Tampil',
             method: 'Get',
+            data: { idBiodata: biodata_id },
             success: function (mdl) {
                 debugger;
 
@@ -387,6 +487,7 @@ body {
             $.ajax({
                 url: '/Organisasi/Create',
                 method: 'Get',
+                data: { idBiodata: biodata_id },
                 success: function (mdl) {
                     debugger;
                     $('#idBodyCreateOrganisasi').empty();

@@ -156,7 +156,7 @@
         debugger;
         var vDataBarang = $('#idFrmEditOrganisasi').serialize();
         $.ajax({
-            url: 'Organisasi/EditSimpan',
+            url: '/Organisasi/EditSimpan',
             data: vDataBarang,
             method: 'Post',
             success: function (mdl) {
@@ -165,8 +165,9 @@
                     alert("Data berhasil diedit");
                     //
                     //
-                    $('#idMdlEditOrganisasi').close;
                     location.reload();
+                    $('#idMdlEditOrganisasi').close;
+                    
                 }
                 else {
                     debugger;

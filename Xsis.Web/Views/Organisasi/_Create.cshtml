@@ -27,6 +27,7 @@
         <div class="col-lg-6">
             <label>Nama Organisasi *</label>
             <input type="text" name="name" data-validate="required" class="form-control blueborder" id="idInpNamaOrganisasi">
+            <input type="hidden" name="biodata_id" id="idBiodataget" />
             <small role="alert" aria-hidden="true" data-validation-message="required">Nama Organisasi Harus Diisi.</small>
         </div>
 
@@ -42,11 +43,11 @@
             <label>Tahun Masuk *</label>
             <select class="form-control blueborder" data-validate="required" name="entry_year" id="idInpTahunMasuk">
                 <option value="">-Pilih-</option>
-                <option value="2011">2011</option>
+                @*<option value="2011">2011</option>
                 <option value="2012">2012</option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
-                <option value="2015">2015</option>
+                <option value="2015">2015</option>*@
             </select>
             <small role="alert" aria-hidden="true" data-validation-message="required">Tanggal Masuk Harus Diisi.</small>
         </div>
@@ -55,11 +56,11 @@
             <label>Tahun Keluar *</label>
             <select class="form-control blueborder" data-validate="required" name="exit_year" id="idInpTahunKeluar">
                 <option value="">-Pilih-</option>
-                <option value="2011">2011</option>
+                @*<option value="2011">2011</option>
                 <option value="2012">2012</option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
-                <option value="2015">2015</option>
+                <option value="2015">2015</option>*@
             </select>
             <small role="alert" aria-hidden="true" data-validation-message="required">Tahun Keluar Harus Diisi.</small>
         </div>
@@ -95,6 +96,22 @@
 
 
 <script>
+    var d = new Date();
+    //var vBiodata_Id = idBiodata;
+    var vBiodata_Id = 1;
+    $(document).ready(function () {
+        var vTahun = "";
+        debugger;
+        for (var i = d.getFullYear(); i > 1970; i--) {
+            vTahun = vTahun +
+                '<option>' + i + '</option>'
+        }
+        $('#idInpTahunMasuk').append(vTahun);
+        $('#idInpTahunKeluar').append(vTahun);
+
+        $('#idBiodataget').val(vBiodata_Id);
+        
+    });
     $('#idBtnCancelOrganisasi').click(function () {
         $('#idMdlCreateOrganisasi').close;
         location.reload();

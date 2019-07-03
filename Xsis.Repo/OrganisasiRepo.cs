@@ -10,14 +10,14 @@ namespace Xsis.Repo
 {
     public class OrganisasiRepo
     {
-        public static List<Organisasi> GetAll()
+        public static List<Organisasi> GetAll(int idBiodata)
         {
             List<Organisasi> result = new List<Organisasi>();
             using (var db = new DataContext())
             {
                 //result = db.Organisasi.ToList();
                 result = (from t in db.Organisasi
-                          where t.is_delete == false
+                          where t.is_delete == false && t.biodata_id == idBiodata
                           select t).OrderByDescending(x => x.id).ToList();
                 return result;
             }
@@ -36,7 +36,7 @@ namespace Xsis.Repo
                 Organisasi organisasi = new Organisasi();
                 using (DataContext db = new DataContext())
                 {
-                    organisasi.biodata_id = 1;
+                    organisasi.biodata_id = organisasimdl.biodata_id;
                     organisasi.created_by = organisasimdl.created_by;
                     organisasi.created_on = DateTime.Now;
                     organisasi.name = organisasimdl.name;

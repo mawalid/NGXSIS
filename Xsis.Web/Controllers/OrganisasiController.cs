@@ -16,15 +16,15 @@ namespace Xsis.Web.Controllers
             return View();
         }
 
-        public ActionResult Tampil()
+        public ActionResult Tampil(int idBiodata)
         {
-            return Json(OrganisasiRepo.GetAll(), JsonRequestBehavior.AllowGet);
+            return Json(OrganisasiRepo.GetAll(idBiodata), JsonRequestBehavior.AllowGet);
         }
         public ActionResult Select()
         {
             return Json(OrganisasiRepo.GetSelect(), JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Create()
+        public ActionResult Create(int idBiodata)
         {
             return PartialView("_Create");
         }
