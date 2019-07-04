@@ -54,7 +54,7 @@
 
         <div class="col-lg-6">
             <label>Tahun Keluar *</label>
-            <select class="form-control blueborder" data-validate="required" name="exit_year" id="idInpTahunKeluar">
+            <select class="form-control blueborder" data-validate="required years" name="exit_year" id="idInpTahunKeluar">
                 <option value="">-Pilih-</option>
                 @*<option value="2011">2011</option>
                 <option value="2012">2012</option>
@@ -63,6 +63,7 @@
                 <option value="2015">2015</option>*@
             </select>
             <small role="alert" aria-hidden="true" data-validation-message="required">Tahun Keluar Harus Diisi.</small>
+            <small role="alert" aria-hidden="true" data-validation-message="years">Tanggal Keluar Tidak Valid.</small>
         </div>
     </div>
 
@@ -155,6 +156,7 @@
 const validators = {
   // Checks the field for emptiness.
     required: element => element.value.length > 0,
+    years: element=>element.value >= document.getElementById("idInpTahunMasuk").value,
 
   // Checks if there are no numbers
   // in the field.
