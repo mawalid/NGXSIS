@@ -88,5 +88,15 @@ namespace Xsis.Web.Controllers
         {
             return PartialView("_CreateIndex");
         }
+
+        public ActionResult EditIndex(int ID)
+        {
+            return PartialView("_EditIndex");
+        }
+
+        public ActionResult DeleteConfirmIndex(int ID)
+        {
+            return PartialView("_DeleteIndex");
+        }
     }
 }

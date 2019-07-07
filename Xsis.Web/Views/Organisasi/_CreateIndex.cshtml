@@ -249,6 +249,7 @@
 
     });
     $('#idBtnCancelOrganisasiCreateIndex').click(function () {
+        debugger;
         $('#idMdlCreateOrganisasiIndex').close;
         $('#idMdlIndexOrganisasi').close;
         location.reload();
@@ -263,7 +264,7 @@
     //$('#idBtnSubmitOrganisasiCreateIndex').click(function () {
     function simpanorganisasicreateindex(){
         debugger;
-        var vDatabarang = $('#idFrmSubmitOrganisasi').serialize();
+        var vDatabarang = $('#idFrmSubmitOrganisasiCreateIndex').serialize();
         $.ajax({
             url: '/Organisasi/Save',
             data: vDatabarang,

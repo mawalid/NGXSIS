@@ -181,6 +181,8 @@
     <Content Include="Views\Shared\_TampilanBawah.cshtml" />
     <Content Include="Views\Shared\_TampilanKiri.cshtml" />
     <Content Include="Views\Organisasi\_CreateIndex.cshtml" />
+    <Content Include="Views\Organisasi\_EditIndex.cshtml" />
+    <Content Include="Views\Organisasi\_DeleteIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

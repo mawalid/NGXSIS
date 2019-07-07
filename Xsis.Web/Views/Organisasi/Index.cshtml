@@ -349,6 +349,50 @@ body {
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="idIndexMdlEditOrganisasi" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content lebarpls">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title" style="color: white; opacity:1;">
+                    Ubah Organisasi
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseEditOrganisasiIndex" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
+                </h4>
+            </div>
+            <div class="modal-body" id="idBodyMdlEditOrganisasi" style="margin-left: 10px;">
+
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="idIndexMdlDeleteOrganisasi" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content">
+            <div class="modal-header merahbg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title">Hapus Organisasi ?</h4>
+            </div>
+            <div class="modal-body" id="idBodyMdlDeleteOrganisasi">
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
     $('#idBtnCloseCreateOrganisasi').click(function () {
         $('#idMdlCreateOrganisasi').close;
@@ -369,17 +413,23 @@ body {
         $('#idMdlCreateOrganisasi').close;
         location.reload();
     });
+
+    $('#idBtnCloseEditOrganisasiIndex').click(function () {
+        $('#idMdlCreateOrganisasi').close;
+        location.reload();
+    });
+
     var biodata_id = 1;
     $(document).ready(function () {
         var vStrHtml = '';
-        
+        var biodata_id_mdl = 1;
         $('#idBtnIndexOrganisasi').click(function () {
             debugger;
             $('#idTblMdlBodyOrganisasi').empty();
             var vStrMdlHtml = '';
             $.ajax({
                 url: '/Organisasi/Tampil',
-                data: { idBiodata: biodata_id },
+                data: { idBiodata: biodata_id_mdl },
                 method: 'Get',
                 success: function (org) {
                     debugger;
@@ -403,8 +453,8 @@ body {
                             '<span class="caret"></span>' +
                             '</button>' +
                             '<ul class="dropdown-menu">' +
-                            '<li><a class="UbahOrganisasi" dataID="' + data.id + '" href="#">Ubah</a></li>' +
-                            '<li><a class="HapusOrganisasiConfirm" dataID="' + data.id + '" href="#">Hapus</a></li>' +
+                            '<li><a class="ClBtnMdlUbahOrganisasi" dataIDmdl="' + data.id + '" href="#">Ubah</a></li>' +
+                            '<li><a class="ClBtnMdlHapusOrganisasiConfirm" dataIDmdl="' + data.id + '" href="#">Hapus</a></li>' +
                             '</ul>' +
                             '</td>' +
                             '</tr>';
@@ -417,6 +467,47 @@ body {
 
                     $('#idMdlIndexOrganisasi').modal('show');
 
+
+                    $('.ClBtnMdlUbahOrganisasi').click(function () {
+                        var vDataID = parseInt($(this).attr('dataIDmdl'));
+                        debugger;
+
+                        $.ajax({
+                            url: '/Organisasi/EditIndex',
+                            data: { ID: vDataID },
+                            method: 'Post',
+                            success: function (mdl) {
+                                $('#idBodyMdlEditOrganisasi').empty();
+                                $('#idBodyMdlEditOrganisasi').append(mdl);
+                                $('#idgetmdl').val(vDataID);
+                                $('#idIndexMdlEditOrganisasi').modal('show');
+                                debugger;
+                            },
+                            error: function (mdl) {
+                                debugger;
+                            }
+                        });
+                    });
+
+                    $('.ClBtnMdlHapusOrganisasiConfirm').click(function () {
+                        var vDataID = parseInt($(this).attr('dataIDmdl'));
+                        debugger;
+                        $.ajax({
+                            url: '/Organisasi/DeleteConfirmIndex',
+                            data: { ID: vDataID },
+                            method: 'Post',
+                            success: function (mdl) {
+                                $('#idBodyMdlDeleteOrganisasi').empty();
+                                $('#idBodyMdlDeleteOrganisasi').append(mdl);
+                                $('#idgetmdl').val(vDataID);
+                                $('#idIndexMdlDeleteOrganisasi').modal('show');
+                                debugger;
+                            },
+                            error: function (mdl) {
+                                debugger;
+                            }
+                        });
+                    });
 
                 },
                 error: function (org) {
