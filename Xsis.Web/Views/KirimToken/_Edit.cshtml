@@ -1,0 +1,317 @@
+﻿
+<link href="~/datepicker/jquery-ui.min.css" rel="stylesheet" />
+
+<style type="text/css">
+    [data-validation-message] {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+
+        [data-validation-message].message-visible {
+            display: block;
+        }
+
+    .blueborder {
+        border-color: blue;
+    }
+
+        .blueborder.invalid {
+            border-color: red;
+        }
+</style>
+
+<style>
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.name-clr{
+    color:#000080;
+}
+    .blueborder {
+        border-color: blue;
+    }
+</style>
+
+<form action="" method="post" id="idFrmSubmitKirimToken" class="body">
+    <label for="idTgl" class="name-clr">Atur Kadaluarsa Token</label><br />
+    @*<div class="input-group">
+        <input type="text" name="expired_token" class="form-control form-custom" id="idExpTglToken" style="border-right: none;" placeholder="">
+        <span class="input-group-addon form-custom" style="background-color: transparent; padding: 6px 7px;"><i class="glyphicon glyphicon-calendar" id="idTglExpToken" style="font-size: 18px; color:#000080;"></i></span>
+        <input type="text" id="idTgl"/>
+    </div>*@
+    <div class="input-container">
+        <input type="text" name="expired_token" data-validate="required validasi_tanggal" class="form-control blueborder" style="border-top-right-radius:0px; border-bottom-right-radius:0px; border-right:none;" id="idTgl" placeholder="">
+        <span class="input-group-addon blueborder" style="background-color: white; padding-right:25px;"><i class="glyphicon glyphicon-calendar" style="font-size: 18px; color:#000080;"></i></span>
+        <input type="text" name="id" id="idget" />
+        <input type="hidden" name="tgl_today" id="idTglToday" />
+        <input type="email" name="email" id="idInpEmail" />
+        <small role="alert" aria-hidden="true" data-validation-message="required">Tanggal Expired Token Harus Diisi.</small>
+        <small role="alert" aria-hidden="true" data-validation-message="validasi_tanggal">Tanggal harus lebih besar dari hari ini.</small>
+    </div>
+    <div class="row">
+        <table align="right">
+            <tr>
+                <td colspan="1">
+                    <div class="btn btn-group">
+
+                        <button type="button" class="btn orenwoy" id="idBtnCancelKirimToken">&nbsp;&nbsp;Batal&nbsp;&nbsp;</button>
+                        <button type="submit" class="btn biruwoy" id="idBtnSubmitKirimToken">Kirim</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<script>
+    $('#idBtnCancelKirimToken').click(function () {
+        debugger;
+        $('#idMdlKirimToken').close;
+        location.reload();
+    });
+    $(document).ready(function () {
+
+        //var id = parseInt(1);
+
+        var tgl = "";
+        var tahun = "";
+        var bulan = "";
+        var tanggal = "";
+        $.ajax({
+            url: '/KirimToken/AmbilData',
+            data: { ID: $('#idget').val() },
+            method: 'Post',
+            success: function (krt) {
+                debugger;
+                a = new Date(parseInt(krt.expired_token.substr(6)));
+                vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
+                vbulan = a.getMonth() + 1;
+                var vMonthList = { 1: '01', 2: '02', 3: '03', 4: '04', 5: '05', 6: '06', 7: '07', 8: '08', 9: '09', 10: '10', 11: '11', 12: '12' };
+                vtahun = a.getFullYear();
+                vDataExpToken = vtahun + "-" + vMonthList[vbulan] + "-" + vtanggal;
+                //$("#idget").val(krt.id);
+                $("#idTgl").datepicker({
+                    minDate: vDataExpToken,
+                    dateFormat: "yy-mm-dd"
+                }).datepicker("setDate", vDataExpToken);
+                $("#idTglToday").datepicker({
+                    minDate: 0,
+                    dateFormat: "yy-mm-dd"
+                }).datepicker("setDate", new Date());
+                $("#idInpEmail").val(krt.email);
+            },
+            error: function (krt) {
+                debugger;
+            }
+        });
+
+    });
+
+
+    
+    //$('#idBtnSubmitKirimToken').click(function () {
+    function simpankirimtoken() {
+
+        debugger;
+        var vDataKirimToken = $('#idFrmSubmitKirimToken').serialize();
+        $.ajax({
+            url: '/KirimToken/EditSimpan',
+            data: vDataKirimToken,
+            method: 'Post',
+            success: function (mdl) {
+                if (mdl.EditToken == "Berhasil") {
+                    debugger;
+                    alert("Kirim Tanggal Expired Token berhasil diedit");
+                    //ToSendMail();
+
+
+
+                } else {
+                    alert("Tanggal Expired Token gagal diedit ")
+                }
+
+            },
+            error: function (mdl) {
+                debugger;
+            }
+        });
+
+    }
+
+    //function ToSendMail() {
+    //    debugger;
+    //    var email = $('#idInpEmail').val();
+    //    var expiredToken = $('#idTgl').val();
+    //    $.ajax({
+    //        url: '/KirimToken/TrySendMail',
+    //        data: { email, expiredToken },
+    //        method: 'post',
+    //        success: function (krt) {
+    //            debugger;
+    //            var model = krt.split('');
+    //            if (model.length>1) {
+    //                alert("email berhasil dikirim");
+
+    //                alert("Token berhasil diedit");
+    //                $('#idMdlKirimToken').close;
+    //                location.reload();
+    //            }
+    //            else
+    //            {
+    //                debugger;
+    //                alert("email gagal dikirim");
+    //            }
+    //        }
+    //    });
+    //}
+
+
+    //vDataExpToken.substr(0, 4), vDataExpToken.substr(5, 2), vDataExpToken.substr(8, 2)
+
+
+</script>
+
+<script src="~/datepicker/jquery-ui.min.js"></script>
+
+<script>
+// (1) Defining our validator-functions
+//     for later use. They return
+//     "true", if the validation passes.
+const validators = {
+  // Checks the field for emptiness.
+    required: element => element.value.length > 0,
+    validasi_tanggal: element=>element.value >= document.getElementById("idTglToday").value,
+
+  // Checks if there are no numbers
+  // in the field.
+  noNumbers: element => !element.value.match(/[0-9]/g),
+
+  // Checks if the value is shorter
+  // than 10 characters.
+  maxLength: element => element.value.length <= 10,
+
+  // Checks if the checkbox is checked.
+  mustBeChecked: element => element.checked
+};
+
+// (2) Check the contents of an input,
+//     get all validators, and mark
+//     the field in case of invalidity.
+function validateElement(element) {
+  resetValidation(element);
+
+  // Store all validators from the
+  // data-validate-attribute into
+  // an array.
+  const rules = element.dataset.validate.split(" ");
+
+  // For every validator on the
+  // field...
+  rules.forEach(rule => {
+    // ...find the corresponding
+    // validator-function from our
+    // object from #1 and call it
+    // with the element as parameter.
+    if (validators[rule](element)) {
+      // If the function returns true, all is fine.
+        debugger;
+        return;
+    } else {
+      // If it returns false, the
+      // validation failed.
+      // In that case, the
+      // markElementInvalid-function
+      // takes care of showing the
+      // error-message.
+      markElementInvalid(element, rule);
+    }
+  });
+}
+
+// (3) Adds classes to an element,
+//     so it appears invalid. Also
+//     it picks the correct feedback-
+//     message and sets it visible.
+function markElementInvalid(element, validatorName) {
+  element.classList.add("invalid");
+  element.setAttribute("aria-invalid", true);
+  const feedbackMessage = element.parentNode.querySelector(
+    `[data-validation-message=${validatorName}]`
+  );
+  feedbackMessage.classList.add("message-visible");
+  feedbackMessage.setAttribute("aria-hidden", false);
+}
+
+// (4) Removes all traces of
+//     validation from an element,
+//     like the error-messages and
+//     the styling.
+//     (Pretty much the opposite of #3)
+function resetValidation(element) {
+  element.classList.remove("invalid");
+  element.setAttribute("aria-invalid", false);
+  element.parentNode
+    .querySelectorAll("[data-validation-message]")
+    .forEach(e => {
+      e.classList.remove("message-visible");
+      e.setAttribute("aria-hidden", true);
+    });
+}
+
+// (5) Store the form and its
+//     inputs in variables.
+const form = document.getElementById("idFrmSubmitKirimToken");
+const formElements = Array.from(form.elements);
+
+// (6) Every input gets an
+//     event-listener attached.
+formElements.forEach(formElement => {
+  // Do nothing if the element has
+  // no data-validate-attribute.
+  if (!formElement.dataset) return;
+  if (!formElement.dataset.validate) return;
+
+  // Attach the blur-event-listener
+  // to the element.
+  formElement.addEventListener("", () => {
+    // This means, validateElement will
+    // be called everytime the element
+    // loses focus.
+    validateElement(formElement);
+  });
+});
+
+// (7) We're doing what we did at #3,
+//     only on form-submit, and for
+//     every field.
+form.addEventListener("submit", event => {
+  // Let's assume, everything is fine.
+  let formIsValid = true;
+  form.classList.remove("invalid");
+
+  // We'll check every field in the form.
+  // (same as #3)
+  formElements.forEach(formElement => {
+    if (!formElement.dataset) return;
+    if (!formElement.dataset.validate) return;
+    validateElement(formElement);
+  });
+
+  // If there are any "invalid"-classes
+  // after we checked all fields, the form
+  // is invalid...
+  formIsValid = form.querySelectorAll(".invalid").length === 0;
+
+  // ...and will not be submitted.
+  if (formIsValid === false) {
+    form.classList.add("invalid");
+    event.preventDefault();
+  } else {
+      debugger;
+      simpankirimtoken();
+  }
+});
+</script>

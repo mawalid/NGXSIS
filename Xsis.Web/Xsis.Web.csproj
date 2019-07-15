@@ -157,6 +157,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KirimTokenController.cs" />
     <Compile Include="Controllers\OrganisasiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -183,6 +184,8 @@
     <Content Include="Views\Organisasi\_CreateIndex.cshtml" />
     <Content Include="Views\Organisasi\_EditIndex.cshtml" />
     <Content Include="Views\Organisasi\_DeleteIndex.cshtml" />
+    <Content Include="Views\KirimToken\Index.cshtml" />
+    <Content Include="Views\KirimToken\_Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

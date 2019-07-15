@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="Organisasi">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages02">
                         ⬤ &nbsp;&nbsp;&nbsp; Pelamar
                     </a>
                 </li>
@@ -30,26 +30,26 @@
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages04" arial-expande="true">
-                        <i class="fa fa-angle-down pull-right"></i>⬤ &nbsp;&nbsp;&nbsp; Penjadwalan<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages04" @*arial-expande="true"*@>
+                        @*<i class="fa fa-angle-down pull-right"></i>*@⬤ &nbsp;&nbsp;&nbsp; Penjadwalan<span class="glyphicon glyphicon-chevron-down pull-right"></span>
                     </a>
-                    <ul id="togglePages04" class="unstyled collapse">
+                    <ul id="togglePages04" class="collapse unstyled">
                         <li><a href="#">Undangan</a></li>
                         <li><a href="#">Tes</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="collapsed dropdown-toggle" data-toggle="collapse" href="#togglePages05">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages05">
                         ⬤ &nbsp;&nbsp;&nbsp; Tes
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed dropdown-toggle" data-toggle="collapse" href="#togglePages06">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages06">
                         ⬤ &nbsp;&nbsp;&nbsp; Bootcamp
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed dropdown-toggle" data-toggle="collapse" href="#togglePages07">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages07">
                         ⬤ &nbsp;&nbsp;&nbsp; Laporan
                     </a>
                 </li>
@@ -61,7 +61,7 @@
 
         <!--/.span3-->
     </aside>
-    <script>
+    @*<script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
             $(".side-nav .collapse").on("hide.bs.collapse", function () {
@@ -71,6 +71,16 @@
                 $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");
             });
         });
-    </script>
+    </script>*@
 </body>
 </html>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+
+        });
+    });
+</script>

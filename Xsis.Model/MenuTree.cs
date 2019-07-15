@@ -14,10 +14,12 @@ namespace Xsis.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long menu_tree_id { get; set; }
+        [Required(AllowEmptyStrings =false)]
+        public long id { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
+        [Required(AllowEmptyStrings = false)]
         public string title { get; set; }
 
         [Column(TypeName = "Varchar")]
@@ -28,35 +30,42 @@ namespace Xsis.Model
         [StringLength(100)]
         public string menu_icon { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public int menu_order { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public int menu_level { get; set; }
 
-        public long menu_parent { get; set; }
+        public Nullable<long> menu_parent { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(100)]
+        [Required(AllowEmptyStrings = false)]
         public string menu_url { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(10)]
+        [Required(AllowEmptyStrings = false)]
         public string menu_type { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public long created_by { get; set; }
 
-        [Column(TypeName = "Date")]
+        [Column(TypeName = "DateTime")]
+        [Required(AllowEmptyStrings = false)]
         public DateTime created_on { get; set; }
 
-        public long modified_by { get; set; }
+        public Nullable<long> modified_by { get; set; }
 
-        [Column(TypeName = "Date")]
-        public DateTime modified_on { get; set; }
+        [Column(TypeName = "DateTime")]
+        public Nullable<DateTime> modified_on { get; set; }
 
-        public long deleted_by { get; set; }
+        public Nullable<long> deleted_by { get; set; }
 
-        [Column(TypeName = "Date")]
-        public DateTime deleted_on { get; set; }
+        [Column(TypeName = "DateTime")]
+        public Nullable<DateTime> deleted_on { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public Boolean is_delete { get; set; }
 
     }

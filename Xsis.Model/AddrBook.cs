@@ -13,7 +13,7 @@ namespace Xsis.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long addrbook_id { get; set; }
+        public long id { get; set; }
 
         public long created_by { get; set; }
 

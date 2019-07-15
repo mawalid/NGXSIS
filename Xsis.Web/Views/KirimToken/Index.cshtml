@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+    /* Set padding to keep content from hitting the edges */
+    .body-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .biru {
+        color: #000080;
+        font-weight: bold;
+    }
+
+    .birutext {
+        color: #000080;
+    }
+
+    .birubg {
+        background-color: #000080;
+        color: white;
+    }
+
+    .merahbg {
+        background-color: #A92E13;
+        color: white;
+    }
+
+    .biruwoy {
+        background-color: #000080;
+        color: white;
+    }
+
+        .biruwoy:hover {
+            background-color: blue;
+        }
+
+    .orenwoy {
+        background-color: orangered;
+        color: white;
+    }
+
+        .orenwoy:hover {
+            background-color: red;
+        }
+
+    .merahwoy {
+        background-color: #A92E13;
+        color: white;
+    }
+
+        .merahwoy:hover {
+            background-color: red;
+            color: white;
+        }
+
+    .table {
+        color: #000080;
+    }
+
+    .lebarwoy {
+        position: center;
+        width: 800px;
+    }
+
+    .tengahwoy {
+        padding-right: 800px;
+    }
+
+    .tengahpls {
+        background-color: none;
+        padding-top: 150px;
+        width: 500px;
+    }
+
+    .lebarpls {
+        margin-left: 50px;
+        width: 500px;
+        height: 400px;
+    }
+
+    .merahtext {
+        color: #A92E13;
+    }
+</style>
+
+<style type="text/css">
+    [data-validation-message] {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+
+        [data-validation-message].message-visible {
+            display: block;
+        }
+
+    .blueborder {
+        border-color: blue;
+        color: #000080;
+    }
+
+        .blueborder.invalid {
+            border-color: red;
+        }
+</style>
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>
+            <div class="input-group">
+                <input type="text" name="rj_sampai" class="form-control blueborder" disabled autocomplete="off" id="idTglsampai" style="border-right: none;" placeholder="Nama Pelamar" >
+                <span style="background-color: transparent;"></span>
+            </div>
+        </td>
+        <td>
+            <button type="button" id="cariDataid" style="background-color:#000080; border:2px solid #000080; width:70px; height:32px; color:white; font-weight:bold;">Cari</button>
+            <button type="reset" style="background-color:#000080; border:2px solid #000080; width:70px; height:32px; color:white; font-weight:bold;">Reset</button>
+        </td>
+    </tr>
+</table>
+<br>
+<div>
+    
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="biru" style="border-bottom: 3px solid #000080">
+                <td>ID</td>
+                <td>EMAIL</td>
+                <td>TOKEN</td>
+                <td>TANGGAL EXPIRED TOKEN</td>
+                <td>#</td>
+            </tr>
+        </thead>
+        <tbody id="idToken">
+            @*<tr>
+                <td>
+
+                </td>
+            </tr>*@
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="idMdlKirimToken" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title" style="color: white; opacity:1;">
+                    Kirim Token
+                    <button class="pull-right" id="idBtnCloseEditKirimToken" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
+                </h4>
+            </div>
+            <div class="modal-body" id="idBodyMdlKirimToken">
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    $('#idBtnCloseEditKirimToken').click(function () {
+        $('#idMdlKirimToken').close;
+        location.reload();
+    });
+    $(document).ready(function () {
+        debugger;
+        var vBiodata_id_mdl = parseInt(1);
+        var vStrHtml = '';
+        $.ajax({
+            url: '/KirimToken/Tampil',
+            method: 'Post',
+            data: { ID: vBiodata_id_mdl },
+            success: function (krt) {
+                //<button type="button" class="btn btn-success" id="idBtnKirimToken">Pop Up Index Kirim Token &nbsp;<span class="glyphicon glyphicon-envelope"></span></button>
+                debugger;
+                $.each(krt, function (i, d) {
+                    debugger;
+                    a = new Date(parseInt(d.expired_token.substr(6)));
+                    vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
+                    vbulan = a.getMonth() + 1;
+                    var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
+                    vtahun = a.getFullYear();
+                    vDataExpToken = vtanggal + "-" + vMonthList[vbulan] + "-" + vtahun;
+                    vStrHtml = vStrHtml + '<tr>' +
+                        '<td>' + d.id + '</td>' +
+                        '<td>' + d.email + '</td>' +
+                        '<td>' + d.token + '</td>' +
+                        '<td>' + vDataExpToken + '</td>' +
+                        '<td><button type="button" class="ClBtnKirimToken" dataID="' + d.id + '"><span class="glyphicon glyphicon-envelope"></span></button></td>' +
+                        '</tr>';
+                });
+                $('#idToken').append(vStrHtml);
+
+                $('.ClBtnKirimToken').click(function () {
+                    var id = parseInt($(this).attr('dataID'));
+                    debugger;
+                    $.ajax({
+                        url: '/KirimToken/Edit',
+                        data: { ID: id },
+                        method: 'Post',
+                        success: function (krt) {
+                            debugger;
+                            $('#idBodyMdlKirimToken').empty();
+                            $('#idBodyMdlKirimToken').append(krt);
+                            $('#idget').val(id);
+                            $('#idMdlKirimToken').modal('show');
+                            debugger;
+                        },
+                        error: function (krt) {
+                            debugger;
+                        }
+
+                    });
+                });
+            },
+            error: function (krt) {
+                debugger;
+            }
+        });
+
+        //$('#idBtnKirimToken').click(function () {
+        //    debugger;
+        //    $.ajax({
+        //        url: '/KirimToken/Edit',
+        //        data: { ID: vBiodata_id_mdl },
+        //        method: 'Post',
+        //        success: function (krt) {
+        //            debugger;
+        //            $('#idBodyMdlKirimToken').empty();
+        //            $('#idBodyMdlKirimToken').append(krt);
+        //            $('#idgetTgl').val(vBiodata_id_mdl);
+        //            $('#idMdlKirimToken').modal('show');
+        //            debugger;
+        //        },
+        //        error: function (krt) {
+        //            debugger;
+        //        }
+
+        //    });
+        //});
+
+    });
+</script>
