@@ -7,18 +7,17 @@ using Xsis.Repo;
 
 namespace Xsis.Web.Controllers
 {
-    public class HomeController : Controller
+    public class LainLainController : Controller
     {
-        // GET: Home
+        // GET: LainLain
         public ActionResult Index()
         {
-            Session["foo"] = 99;
             return View();
         }
 
-        public ActionResult Tampil(int ID)
+        public ActionResult Tampil(int idBiodata)
         {
-            return Json(HomeRepo.GetAll(ID), JsonRequestBehavior.AllowGet);
+            return Json(LainLainRepo.GetAll(idBiodata), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -68,3 +68,17 @@ C:\Users\PC\Downloads\MiniProject\Walid\Walid_rev5 (Organisasi)\SprintReview01\n
 C:\Users\PC\Downloads\MiniProject\Walid\Walid_rev5 (Organisasi)\SprintReview01\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.csprojResolveAssemblyReference.cache
 C:\Users\PC\Downloads\MiniProject\Walid\Walid_rev5 (Organisasi)\SprintReview01\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.dll
 C:\Users\PC\Downloads\MiniProject\Walid\Walid_rev5 (Organisasi)\SprintReview01\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.pdb
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.Repo.dll.config
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.Repo.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.Repo.pdb
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\EntityFramework.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.Model.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.ViewModel.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.Model.pdb
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\Xsis.ViewModel.pdb
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\EntityFramework.xml
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\obj\Debug\Xsis.Repo.csprojResolveAssemblyReference.cache
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\obj\Debug\Xsis.Repo.dll
+C:\Users\PC\Downloads\MiniProject\Walid\Upload_github\Xsis.Repo\obj\Debug\Xsis.Repo.pdb

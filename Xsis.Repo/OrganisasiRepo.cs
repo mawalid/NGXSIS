@@ -102,7 +102,7 @@ namespace Xsis.Repo
                     dep.responsibility = organisasi.responsibility;
                     dep.exit_year = organisasi.exit_year;
                     dep.entry_year = organisasi.entry_year;
-                    dep.position = organisasi.position;
+                    dep.position = organisasi.position.Trim();
                     dep.name = organisasi.name;
                     db.Entry(dep).State = EntityState.Modified;//dep diperlakukan sebagai Entry di dalam database organisasi (System.Data.Entity.EntityState.Modified)
                     db.SaveChanges();

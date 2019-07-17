@@ -1,0 +1,335 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .btn-link {
+        font-weight: 400;
+        color: #000000;
+        border-radius: 0;
+    }
+
+        .btn-link:focus, .btn-link:hover {
+            color: #000080;
+            text-decoration: underline;
+            background-color: transparent;
+        }
+</style>
+
+<style>
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+    /* Set padding to keep content from hitting the edges */
+    .body-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .biru {
+        color: #000080;
+        font-weight: bold;
+    }
+
+    .birutext {
+        color: #000080;
+    }
+
+    .birubg {
+        background-color: #000080;
+        color: white;
+    }
+
+    .merahbg {
+        background-color: #A92E13;
+        color: white;
+    }
+
+    .biruwoy {
+        background-color: #000080;
+        color: white;
+    }
+
+        .biruwoy:hover {
+            background-color: blue;
+        }
+
+    .orenwoy {
+        background-color: orangered;
+        color: white;
+    }
+
+        .orenwoy:hover {
+            background-color: red;
+        }
+
+    .merahwoy {
+        background-color: #A92E13;
+        color: white;
+    }
+
+        .merahwoy:hover {
+            background-color: red;
+            color: white;
+        }
+
+    .table {
+        color: #000080;
+    }
+
+    .lebarwoy {
+        position: center;
+        width: 800px;
+    }
+
+    .tengahwoy {
+        padding-right: 800px;
+    }
+
+    .tengahpls {
+        background-color: none;
+        padding-top: 150px;
+        width: 500px;
+    }
+
+    .lebarpls {
+        margin-left: 50px;
+        width: 500px;
+        height: 400px;
+    }
+
+    .merahtext {
+        color: #A92E13;
+    }
+</style>
+
+<style>
+    .widget-menu > li > a:hover {
+        background-color: #eee;
+        color: #000080;
+    }
+</style>
+
+<div class="table-responsive" style="height:600px">
+    <table class="table table-striped">
+        <tr style="border-bottom: 3px solid #000080">
+            <td colspan="4">
+                <button type="button" class="btn btn-success" id="idBtnIndexLainLain">Pop Up Index Lain-Lain</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="modal fade" id="idMdlIndexLainLain" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title" style="color: white; opacity:1;">
+                    Detil Pelamar
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseIndexLainLain" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
+                </h4>
+            </div>
+            <div class="modal-body" id="idBodyIndexLainLain" style="margin-left: 10px;">
+
+                <div class="row">
+                    <div class="col-lg-3 sidebar">
+                        <ul class="widget widget-menu unstyled batas-atas batas-bawah" style="background-color: white; border-style: solid; border-width: 1px;border-color:#000066;">
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages01">
+                                    Profil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages02">
+                                    Biodata
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                                    Pengalaman Kerja
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed center-block" data-toggle="collapse" href="#togglePages03">
+                                    Pendidikan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Pelatihan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Sertifikasi
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Sumber Lowongan Kerja
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages01">
+                                    Organisasi
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages02">
+                                    Biodata
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                                    Keluarga
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed center-block" data-toggle="collapse" href="#togglePages03">
+                                    Keahlian
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Lain-Lain
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Dokumen
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Catatan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                                    Aktifasi Akun
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                                    Lihat Tes
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                                    Hasil Tes
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 table-responsive" style="height:600px">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="border-bottom: 3px solid #000080">
+                                    <td colspan="5">
+                                        <h4 class="biru">Lain-Lain<button type="button" class="btn btn-link" id="idBtnMdlCreateLainLain"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
+                                    </td>
+                                </tr>
+                                <tr class="biru" style="border-bottom: 3px solid #000080">
+                                    <td>NAMA</td>
+                                    <td>ALAMAT</td>
+                                    <td>JABATAN</td>
+                                    <td>HUBUNGAN</td>
+                                    <td>#</td>
+                                </tr>
+                            </thead>
+                            <tbody id="idTblMdlBodyLainLain"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="idIndexMdlEditLainLain" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog tengahpls" role="document">
+        <div class="modal-content lebarpls">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title" style="color: white; opacity:1;">
+                    Ubah LainLain
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity:1;">x</button>*@
+                    <button class="pull-right" id="idBtnCloseEditLainLainIndex" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button>
+                </h4>
+            </div>
+            <div class="modal-body" id="idBodyMdlEditLainLain" style="margin-left: 10px;">
+
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+    $('#idBtnCloseIndexLainLain').click(function () {
+        $('#idMdlIndexLainLain').close;
+        location.reload();
+    });
+
+    $('#idBtnCloseEditOrganisasiIndex').click(function () {
+        $('#idIndexMdlEditOrganisasi').close;
+        location.reload();
+    });
+
+    $(document).ready(function () {
+        var idMdl = 1;
+        $('#idBtnIndexLainLain').click(function () {
+            debugger;
+            $('#idTblMdlBodyLainLain').empty();
+            var vStrMdlHtml = '';
+            $.ajax({
+                url: '/LainLain/Tampil',
+                data: { idBiodata: idMdl },
+                method: 'Get',
+                success: function (lal) {
+                    debugger;
+                    $.each(lal, function (index, data) {
+                        vStrMdlHtml = vStrMdlHtml + '<tr>' +
+                            '<td style="border-top: 1px solid #000080">' + data.name + '</td>' +
+                            '<td style="border-top: 1px solid #000080">' + data.position + '</td>' +
+                            '<td style="border-top: 1px solid #000080">' + data.address_phone + '</td>' +
+                            '<td style="border-top: 1px solid #000080">' + data.relation + '</td>' +
+                            '<td class="dropdown" style="border-top: 1px solid #000080">' +
+                            '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;' +
+                            '<span class="caret"></span>' +
+                            '</button>' +
+                            '<ul class="dropdown-menu">' +
+                            '<li><a class="ClBtnMdlUbahLainLain" dataIDmdl="' + data.id + '" href="#">Ubah</a></li>' +
+                            '<li><a class="ClBtnMdlHapusLainLainConfirm" dataIDmdl="' + data.id + '" href="#">Hapus</a></li>' +
+                            '</ul>' +
+                            '</td>' +
+                            '</tr>';
+                    });
+
+                    $('#idTblMdlBodyLainLain').append(vStrMdlHtml);
+                    $('#idMdlIndexLainLain').modal('show');
+                }
+            });
+        });
+    });
+</script>

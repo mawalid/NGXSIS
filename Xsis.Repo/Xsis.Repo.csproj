@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiodataRepo.cs" />
+    <Compile Include="ForgotPasswordFormRepo.cs" />
+    <Compile Include="HomeRepo.cs" />
     <Compile Include="KirimTokenRepo.cs" />
+    <Compile Include="LainLainRepo.cs" />
     <Compile Include="OrganisasiRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

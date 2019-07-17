@@ -9,29 +9,35 @@
 
         }
     </style>
+    <style>
+        .widget-menu > li > a:hover {
+            background-color: #eee;
+            color: #000080;
+        }
+    </style>
 </head>
 <body>
     <div class="span3 batas-atas">
         <div class="sidebar">
-            <ul class="widget widget-menu unstyled batas-atas batas-bawah" style="background-color: white; border-style: solid; border-width: 1px;border-color:#000066;">
-                <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages01">
+            <ul id="idSideBar" class="widget widget-menu unstyled batas-atas batas-bawah" style="background-color: white; border-style: solid; border-width: 1px;border-color:#000066;">
+                @*<li>
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages00">
                         ⬤ &nbsp;&nbsp;&nbsp; Beranda
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages02">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages01">
                         ⬤ &nbsp;&nbsp;&nbsp; Pelamar
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages02">
                         ⬤ &nbsp;&nbsp;&nbsp; Proses Pelamar
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages04" @*arial-expande="true"*@>
-                        @*<i class="fa fa-angle-down pull-right"></i>*@⬤ &nbsp;&nbsp;&nbsp; Penjadwalan<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages03">
+                        ⬤ &nbsp;&nbsp;&nbsp; Penjadwalan<span class="glyphicon glyphicon-chevron-down pull-right"></span>
                     </a>
                     <ul id="togglePages04" class="collapse unstyled">
                         <li><a href="#">Undangan</a></li>
@@ -39,48 +45,49 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages05">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages04">
                         ⬤ &nbsp;&nbsp;&nbsp; Tes
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages06">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages05">
                         ⬤ &nbsp;&nbsp;&nbsp; Bootcamp
                     </a>
                 </li>
                 <li>
-                    <a class="collapsed" data-toggle="collapse" href="#togglePages07">
+                    <a class="collapsed" data-toggle="collapse" href="#togglePages06">
                         ⬤ &nbsp;&nbsp;&nbsp; Laporan
                     </a>
-                </li>
+                </li>*@
             </ul>
         </div>
         <!--/.sidebar-->
     </div>
-    <aside th:fragment="sidebar" class="main-sidebar">
-
+    <aside id="sidebar" class="main-sidebar">
         <!--/.span3-->
     </aside>
-    @*<script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-            $(".side-nav .collapse").on("hide.bs.collapse", function () {
-                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
-            });
-            $('.side-nav .collapse').on("show.bs.collapse",function () {
-                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");
-            });
-        });
-    </script>*@
 </body>
 </html>
-
-
 <script>
     $(document).ready(function () {
-
+        var vStrHtml = '';
+        var id = parseInt(1);
         $.ajax({
+            url: '/Home/Tampil',
+            method: 'Post',
+            data: { ID: id },
+            success: function (hom) {
+                debugger;
+                $.each(hom, function (i, d) {
+                    debugger;
+                    vStrHtml = vStrHtml + '<li>' +
+                        '<a class="collapsed" data-toggle="collapse" href="#togglePages0' + d.id+ '">' +
+                        '⬤' + '&nbsp;&nbsp;&nbsp;' + d.title + '</a>' +
+                        '</li>';
+                });
 
+                $('#idSideBar').append(vStrHtml);
+            }
         });
     });
 </script>
