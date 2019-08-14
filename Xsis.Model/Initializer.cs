@@ -49,6 +49,19 @@ namespace Xsis.Model
             {
                 context.AddrBook.Add(item);
             }
+
+            List<Educational_Level> educational_level = new List<Educational_Level>();
+            educational_level.Add(new Educational_Level { created_by = 99, created_on = DateTime.Now, modified_by = null, modified_on = null, deleted_by = null, deleted_on = null, is_delete = false, name = "SMA", description = "SMA" });
+            educational_level.Add(new Educational_Level { created_by = 99, created_on = DateTime.Now, modified_by = null, modified_on = null, deleted_by = null, deleted_on = null, is_delete = false, name = "D3", description = "D3" });
+            educational_level.Add(new Educational_Level { created_by = 99, created_on = DateTime.Now, modified_by = null, modified_on = null, deleted_by = null, deleted_on = null, is_delete = false, name = "S1", description = "S1" });
+            educational_level.Add(new Educational_Level { created_by = 99, created_on = DateTime.Now, modified_by = null, modified_on = null, deleted_by = null, deleted_on = null, is_delete = false, name = "S2", description = "S2" });
+            educational_level.Add(new Educational_Level { created_by = 99, created_on = DateTime.Now, modified_by = null, modified_on = null, deleted_by = null, deleted_on = null, is_delete = false, name = "S3", description = "S3" });
+            base.Seed(context);
+
+            foreach (var item in educational_level)
+            {
+                context.Educational_Level.Add(item);
+            }
         }
     }
 }

@@ -162,6 +162,7 @@
     <Compile Include="Controllers\KirimTokenController.cs" />
     <Compile Include="Controllers\LainLainController.cs" />
     <Compile Include="Controllers\OrganisasiController.cs" />
+    <Compile Include="Controllers\RiwayatPendidikanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,9 @@
     <Content Include="Views\KirimToken\_Edit.cshtml" />
     <Content Include="Views\LainLain\Index.cshtml" />
     <Content Include="Views\ForgotPasswordForm\Index.cshtml" />
+    <Content Include="Views\RiwayatPendidikan\Index.cshtml" />
+    <Content Include="Views\RiwayatPendidikan\_Tambah.cshtml" />
+    <Content Include="Views\RiwayatPendidikan\_Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

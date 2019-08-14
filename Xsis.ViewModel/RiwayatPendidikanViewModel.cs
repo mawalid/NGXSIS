@@ -6,16 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xsis.Model
+namespace Xsis.ViewModel
 {
-
-    [Table("x_riwayat_pendidikan")]
-    public class Riwayat_Pendidikan
+    public class RiwayatPendidikanViewModel
     {
-        [Key]
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public long id { get; set; }
 
         public long created_by { get; set; }
@@ -89,5 +83,9 @@ namespace Xsis.Model
         [Column(TypeName = "VARCHAR")]
         [StringLength(5000)]
         public string deskripsi_ta { get; set; }
+
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(10)]
+        public string education_level_name { get; set; }  //tambahan untuk menyimpan nama
     }
 }
